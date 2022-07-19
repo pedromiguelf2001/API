@@ -9,7 +9,7 @@ class Course(Base):
     name = Column(String, unique=True, index=True)
     university = Column(Integer, ForeignKey("university.id"))
 
-    alunos = relationship("Student", back_populates="curso")
+    students = relationship("Student", back_populates="courses")
 
 class Student(Base):
     __tablename__ = "student"
@@ -20,8 +20,8 @@ class Student(Base):
     university = Column(Integer, ForeignKey("university.id"))
     course = Column(Integer, ForeignKey("course.id"))
 
-    curso = relationship("Course", back_populates="alunos")
-    uni = relationship("University", back_populates="alun")
+    courses = relationship("Course", back_populates="students")
+    universitys = relationship("University", back_populates="students")
 
 
 class University(Base):
@@ -30,5 +30,5 @@ class University(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
 
-    alun = relationship("Student", back_populates="uni")
+    students = relationship("Student", back_populates="universitys")
     

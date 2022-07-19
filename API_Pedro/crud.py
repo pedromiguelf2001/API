@@ -4,19 +4,19 @@ from sqlalchemy.orm import Session
 import models, schema
 
 def get_university(db: Session, uni_id: int):
-    return db.query(models.University).filter(models.University.id == uni_id).first()
+    return db.query(models.University).filter(models.University.id == uni_id).one_or_none()
 
 def get_universitys(db: Session):
     return db.query(models.University).all()
 
 def get_student(db: Session, stu_id: int):
-    return db.query(models.Student).filter(models.Student.id == stu_id).first()
+    return db.query(models.Student).filter(models.Student.id == stu_id).one_or_none()
 
 def get_studentes(db: Session):
     return db.query(models.Student).all()
 
 def get_course(db: Session, course_id: int):
-    return db.query(models.Course).filter(models.Course.id == course_id).first()
+    return db.query(models.Course).filter(models.Course.id == course_id).one_or_none()
 
 def get_courses(db: Session):
     return db.query(models.Course).all()
